@@ -1,0 +1,1361 @@
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+
+// index.js
+var htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hola! \uBC14\uB974\uC140\uB85C\uB098 AI \uAC00\uC774\uB4DC \uCC57\uBD07</title>
+  <meta name="description" content="\uC9C0\uC911\uD574\uC758 \uBCF4\uC11D, \uBC14\uB974\uC140\uB85C\uB098! \uC778\uACF5\uC9C0\uB2A5 \uB85C\uCEEC \uAC00\uC774\uB4DC \uBC14\uB9AC(Bari)\uC640 \uD568\uAED8 \uC0AC\uADF8\uB77C\uB2E4 \uD30C\uBC00\uB9AC\uC544, \uAD6C\uC5D8 \uACF5\uC6D0 \uB4F1 \uC228\uC740 \uBA85\uC18C\uC640 \uD604\uC9C0 \uB9DB\uC9D1\uC744 \uD0D0\uD5D8\uD574 \uBCF4\uC138\uC694.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Premium Modern Design System - Barcelona Travel Guide Portal */
+    :root {
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Outfit', 'Noto Sans KR', sans-serif;
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      
+      /* Barcelona Sunrise/Sunset Color Palettes */
+      --gradient-primary: linear-gradient(135deg, #FF5A5F 0%, #FF7E40 50%, #FFB900 100%);
+      --gradient-accent: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+      --gradient-card-hover: linear-gradient(180deg, rgba(255, 90, 95, 0.1) 0%, rgba(255, 185, 0, 0.05) 100%);
+      
+      --radius-sm: 8px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+      --border-radius-card: 22px;
+    }
+
+    /* Dark Mode variables (Default) */
+    body.dark-mode {
+      --bg-app: #0b0813;
+      --bg-surface: #120e22;
+      --bg-panel: rgba(26, 20, 48, 0.55);
+      --bg-card: rgba(30, 24, 56, 0.6);
+      --bg-input: rgba(14, 11, 26, 0.85);
+      --text-main: #f5f2fb;
+      --text-muted: #a69bb8;
+      --border-light: rgba(255, 255, 255, 0.06);
+      --border-focus: rgba(255, 90, 95, 0.4);
+      --primary: #FF5A5F;
+      --secondary: #FFB900;
+      --accent-color: #8E2DE2;
+      --glass-blur: blur(20px);
+      --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Light Mode variables */
+    body.light-mode {
+      --bg-app: #f4f3f9;
+      --bg-surface: #ffffff;
+      --bg-panel: rgba(255, 255, 255, 0.85);
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-input: #fbfbfe;
+      --text-main: #1f1b2d;
+      --text-muted: #736d85;
+      --border-light: rgba(31, 38, 135, 0.08);
+      --border-focus: rgba(255, 90, 95, 0.5);
+      --primary: #FF5A5F;
+      --secondary: #E09000;
+      --accent-color: #4A00E0;
+      --glass-blur: blur(20px);
+      --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-body);
+    }
+
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-main);
+      transition: background-color 0.4s ease, color 0.4s ease;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Main Container */
+    .portal-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      max-width: 1600px;
+      background-color: var(--bg-app);
+      position: relative;
+    }
+
+    /* Header Design */
+    .portal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      height: 80px;
+      z-index: 10;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-logo {
+      font-size: 2rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rotate-compass 12s linear infinite;
+    }
+
+    @keyframes rotate-compass {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.7rem;
+      letter-spacing: -0.5px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .widget-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Barcelona Live Time Clock */
+    .bcn-clock {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bcn-clock i {
+      color: var(--primary);
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-bounce);
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--primary);
+      transform: scale(1.08);
+      background-color: var(--border-light);
+    }
+
+    .icon-sun { display: none; font-size: 1.1rem; color: var(--secondary); }
+    .icon-moon { display: block; font-size: 1.1rem; }
+
+    body.light-mode .icon-sun { display: block; }
+    body.light-mode .icon-moon { display: none; }
+
+    /* Dashboard Layout */
+    .portal-layout {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      flex: 1;
+      height: calc(100vh - 80px);
+      overflow: hidden;
+    }
+
+    /* Left Side: Destination Hub */
+    .destination-hub {
+      padding: 2.2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background-image: radial-gradient(rgba(255, 90, 95, 0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .hub-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .hub-hero h2 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .hub-hero h2 span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hub-hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+
+    /* Attraction Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .destination-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--border-radius-card);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      background-image: var(--gradient-card-hover);
+    }
+
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .destination-card:hover .card-img-container img {
+      transform: scale(1.06);
+    }
+
+    .card-overlay-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-details {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      flex: 1;
+    }
+
+    .card-details h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .card-details p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-action-bar {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .card-rating {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-btn {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition-fast);
+    }
+
+    .destination-card:hover .card-btn {
+      color: var(--text-main);
+      transform: translateX(4px);
+    }
+
+    /* Recommended Routes Grid */
+    .routes-hub {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .routes-hub h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .routes-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .route-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 0.8rem 1.4rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: var(--transition-bounce);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .route-chip:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      background-image: var(--gradient-card-hover);
+    }
+
+    .route-chip i {
+      font-size: 1.1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Right Side: Chat Assistant (Bari) */
+    .chat-assistant {
+      background-color: var(--bg-surface);
+      border-left: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .assistant-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .assistant-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 11px;
+      height: 11px;
+      background-color: #2ec4b6;
+      border: 2px solid var(--bg-surface);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.4); }
+      70% { box-shadow: 0 0 0 5px rgba(46, 196, 182, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 196, 182, 0); }
+    }
+
+    .assistant-meta h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .assistant-meta span {
+      font-size: 0.75rem;
+      color: #2ec4b6;
+      font-weight: 600;
+    }
+
+    /* Messages Area */
+    .message-log {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background-image: radial-gradient(var(--border-light) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .msg-bubble {
+      display: flex;
+      flex-direction: column;
+      max-width: 85%;
+      gap: 0.3rem;
+      animation: pop-bubble 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+
+    @keyframes pop-bubble {
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .msg-bot { align-self: flex-start; }
+    .msg-user { align-self: flex-end; }
+
+    .msg-text {
+      padding: 1.1rem 1.3rem;
+      border-radius: var(--radius-md);
+      font-size: 0.93rem;
+      line-height: 1.6;
+      box-shadow: var(--shadow-sm);
+      word-break: break-word;
+    }
+
+    .msg-bot .msg-text {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      border-top-left-radius: 0;
+    }
+
+    .msg-user .msg-text {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-top-right-radius: 0;
+      box-shadow: 0 4px 15px rgba(255, 90, 95, 0.25);
+    }
+
+    .msg-time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .msg-bot .msg-time { align-self: flex-start; padding-left: 0.2rem; }
+    .msg-user .msg-time { align-self: flex-end; padding-right: 0.2rem; }
+
+    /* Markdown helper inside message bubbles */
+    .msg-text p { margin-bottom: 0.6rem; }
+    .msg-text p:last-child { margin-bottom: 0; }
+    .msg-text strong { font-weight: 700; }
+    .msg-text ul, .msg-text ol { margin-left: 1.1rem; margin-bottom: 0.6rem; }
+    .msg-text li { margin-bottom: 0.2rem; }
+    .msg-text code {
+      font-family: monospace;
+      background: rgba(0,0,0,0.15);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+
+    /* Embedded Suggested Queries */
+    .msg-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .query-chip {
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-bounce);
+    }
+
+    .query-chip:hover {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+
+    /* Input Dock */
+    .input-dock {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--border-light);
+      background-color: var(--bg-surface);
+    }
+
+    .dock-form {
+      width: 100%;
+    }
+
+    .dock-wrapper {
+      display: flex;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 0.5rem 0.6rem 0.5rem 1.2rem;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-fast);
+    }
+
+    .dock-wrapper:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.15);
+    }
+
+    #chat-input {
+      flex: 1;
+      border: none;
+      background: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      resize: none;
+      max-height: 120px;
+      line-height: 1.5;
+      padding: 0.5rem 0;
+    }
+
+    #chat-input:focus { outline: none; }
+
+    .send-btn-circle {
+      background: var(--gradient-primary);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition-bounce);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(255, 90, 95, 0.2);
+      flex-shrink: 0;
+    }
+
+    .send-btn-circle:hover {
+      transform: scale(1.06) rotate(-10deg);
+      background: var(--gradient-sunset-reverse);
+    }
+
+    .send-btn-circle:disabled {
+      background: var(--border-light);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .dock-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Bouncing typing indicator */
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      height: 20px;
+      padding: 0 4px;
+    }
+
+    .bounce-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-muted);
+      border-radius: 50%;
+      animation: dot-bounce 1.4s infinite ease-in-out both;
+    }
+
+    .bounce-dot:nth-child(1) { animation-delay: -0.32s; }
+    .bounce-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes dot-bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1.0); }
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: var(--radius-full);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+    /* Responsive Design */
+    @media (max-width: 1100px) {
+      .portal-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 500px;
+      }
+      .chat-assistant {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .portal-header {
+        padding: 1rem 1.5rem;
+      }
+      .brand-name { font-size: 1.4rem; }
+      .bcn-clock { display: none; }
+      .destination-hub { padding: 1.5rem; gap: 1.5rem; }
+      .hub-hero h2 { font-size: 2.1rem; }
+    }
+  </style>
+</head>
+<body class="dark-mode">
+  <div class="portal-container">
+    <!-- Header -->
+    <header class="portal-header">
+      <div class="brand-section">
+        <i class="fa-solid fa-dharmachakra brand-logo"></i>
+        <h1 class="brand-name">Barcelona AI</h1>
+      </div>
+      <div class="widget-section">
+        <!-- Live Time in BCN -->
+        <div class="bcn-clock">
+          <i class="fa-solid fa-clock"></i>
+          <span>\uBC14\uB974\uC140\uB85C\uB098 \uC2DC\uAC04: </span>
+          <span id="live-time">00:00:00</span>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="\uD654\uBA74 \uD14C\uB9C8 \uBCC0\uACBD">
+          <i class="fa-solid fa-sun icon-sun"></i>
+          <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="portal-layout">
+      <!-- Left Dashboard: Destinations -->
+      <section class="destination-hub" aria-label="\uBC14\uB974\uC140\uB85C\uB098 \uC8FC\uC694 \uB79C\uB4DC\uB9C8\uD06C">
+        <div class="hub-hero">
+          <h2><span>\uBC14\uB974\uC140\uB85C\uB098</span> \uAD00\uAD11 \uD5C8\uBE0C</h2>
+          <p>\uC9C0\uC911\uD574\uC5D0\uC11C \uAC00\uC7A5 \uB208\uBD80\uC2E0 \uAC00\uC6B0\uB514\uC758 \uC608\uC220 \uB3C4\uC2DC \uBC14\uB974\uC140\uB85C\uB098! \uC544\uB798 \uCE74\uB4DC\uB098 \uCD94\uCC9C \uCF54\uC2A4\uB97C \uD074\uB9AD\uD574 \uD604\uC9C0 AI \uAC00\uC774\uB4DC\uC5D0\uAC8C \uC77C\uC815\uC744 \uC989\uC2DC \uCD94\uCC9C\uBC1B\uC73C\uC138\uC694.</p>
+        </div>
+
+        <!-- Carousel / Grid -->
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="destination-card" data-attraction="\uC0AC\uADF8\uB77C\uB2E4 \uD30C\uBC00\uB9AC\uC544" tabindex="0">
+            <div class="card-img-container">
+              <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="\uC0AC\uADF8\uB77C\uB2E4 \uD30C\uBC00\uB9AC\uC544 \uC131\uB2F9" loading="lazy">
+              <span class="card-overlay-tag">\uC131\uB2F9</span>
+            </div>
+            <div class="card-details">
+              <h3>\uC0AC\uADF8\uB77C\uB2E4 \uD30C\uBC00\uB9AC\uC544</h3>
+              <p>\uC548\uD1A0\uB2C8 \uAC00\uC6B0\uB514\uAC00 \uC77C\uC0DD\uC744 \uBC14\uCCD0 \uC124\uACC4\uD55C \uBC14\uB974\uC140\uB85C\uB098 \uCD5C\uACE0\uC758 \uAC78\uC791. \uB208\uBD80\uC2E0 \uB0B4\uBD80 \uC2A4\uD14C\uC778\uB4DC\uAE00\uB77C\uC2A4 \uBE5B\uC774 \uD658\uC0C1\uC801\uC785\uB2C8\uB2E4.</p>
+              <div class="card-action-bar">
+                <span class="card-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                <span class="card-btn">\uC77C\uC815/\uC608\uC57D \uD301 \uBB3B\uAE30 <i class="fa-solid fa-chevron-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="destination-card" data-attraction="\uAD6C\uC5D8 \uACF5\uC6D0" tabindex="0">
+            <div class="card-img-container">
+              <img src="https://images.unsplash.com/photo-1523531294919-4bea7c65e894?auto=format&fit=crop&w=800&q=80" alt="\uAD6C\uC5D8 \uACF5\uC6D0" loading="lazy">
+              <span class="card-overlay-tag">\uACF5\uC6D0</span>
+            </div>
+            <div class="card-details">
+              <h3>\uAD6C\uC5D8 \uACF5\uC6D0</h3>
+              <p>\uAC00\uC6B0\uB514\uC758 \uB3D9\uD654\uC801\uC778 \uBAA8\uC790\uC774\uD06C \uD0C0\uC77C\uB85C \uC218\uB193\uC544\uC9C4 \uCE5C\uD658\uACBD \uC815\uC6D0. \uAD11\uC7A5\uC5D0\uC11C \uD3BC\uCCD0\uC9C0\uB294 \uB4DC\uB113\uC740 \uC9C0\uC911\uD574 \uC624\uC158\uBDF0\uAC00 \uB9E4\uB825\uC801\uC785\uB2C8\uB2E4.</p>
+              <div class="card-action-bar">
+                <span class="card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                <span class="card-btn">\uC77C\uC815/\uC608\uC57D \uD301 \uBB3B\uAE30 <i class="fa-solid fa-chevron-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="destination-card" data-attraction="\uCE74\uC0AC \uBC14\uD2B8\uC694" tabindex="0">
+            <div class="card-img-container">
+              <img src="https://images.unsplash.com/photo-1563297007-0686b8c63960?auto=format&fit=crop&w=800&q=80" alt="\uCE74\uC0AC \uBC14\uD2B8\uC694" loading="lazy">
+              <span class="card-tag card-overlay-tag">\uAC74\uCD95\uBB3C</span>
+            </div>
+            <div class="card-details">
+              <h3>\uCE74\uC0AC \uBC14\uD2B8\uC694</h3>
+              <p>\uBC14\uB2E4\uC758 \uC720\uAE30\uC801\uC778 \uD615\uC0C1\uACFC \uC6A9\uC758 \uBAA8\uC2B5\uC744 \uB534 \uAC00\uC6B0\uB514\uC758 \uC624\uC0C9 \uCC2C\uB780\uD55C \uC8FC\uD0DD. \uBC24\uC5D0\uB294 \uC678\uBCBD \uC870\uBA85\uC774 \uB3D9\uD654\uCC98\uB7FC \uD658\uC0C1\uC801\uC785\uB2C8\uB2E4.</p>
+              <div class="card-action-bar">
+                <span class="card-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                <span class="card-btn">\uC77C\uC815/\uC608\uC57D \uD301 \uBB3B\uAE30 <i class="fa-solid fa-chevron-right"></i></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Recommended Routes Section -->
+        <section class="routes-hub" aria-label="\uCD94\uCC9C \uD0D0\uBC29 \uCF54\uC2A4">
+          <h3>\u{1F5FA}\uFE0F \uD14C\uB9C8\uBCC4 \uCD94\uCC9C \uC5EC\uD589 \uCF54\uC2A4</h3>
+          <div class="routes-container">
+            <button class="route-chip" data-query="\uBC14\uB974\uC140\uB85C\uB098 3\uC77C \uCD94\uCC9C \uC5EC\uD589 \uCF54\uC2A4\uB97C \uC790\uC138\uD788 \uACC4\uD68D\uD574 \uC918.">
+              <i class="fa-solid fa-compass"></i> \uC54C\uCC2C 3\uC77C \uD575\uC2EC \uCF54\uC2A4
+            </button>
+            <button class="route-chip" data-query="\uAC00\uC6B0\uB514 \uD22C\uC5B4 \uB300\uD45C \uAC74\uCD95\uBB3C \uB9AC\uC2A4\uD2B8\uC640 \uD22C\uC5B4 \uC608\uC57D \uBC29\uBC95\uC744 \uBE44\uAD50\uD574 \uC54C\uB824\uC918.">
+              <i class="fa-solid fa-monument"></i> \uAC00\uC6B0\uB514 \uC9D1\uC911 \uD22C\uC5B4
+            </button>
+            <button class="route-chip" data-query="\uBC14\uB974\uC140\uB85C\uB098\uC5D0\uC11C \uAF2D \uBC29\uBB38\uD574\uC57C \uD560 \uB85C\uCEEC \uD0C0\uD30C\uC2A4 \uBC0F \uBE60\uC5D0\uC57C \uB9DB\uC9D1\uC744 \uCD94\uCC9C\uD574\uC918.">
+              <i class="fa-solid fa-utensils"></i> \uC9C0\uC911\uD574 \uD0C0\uD30C\uC2A4 \uB9DB\uC9D1
+            </button>
+            <button class="route-chip" data-query="\uBC14\uB974\uC140\uB85C\uB098 \uC9C0\uD558\uCCA0, \uBC84\uC2A4 \uAD50\uD1B5 \uD328\uC2A4\uAD8C(T-Casual, T-Usual) \uC885\uB958\uC640 \uCD94\uCC9C \uAD50\uD1B5 \uD301\uC744 \uC54C\uB824\uC918.">
+              <i class="fa-solid fa-ticket"></i> \uCD08\uBCF4 \uD544\uC218 \uB300\uC911\uAD50\uD1B5 \uD301
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <!-- Right Dashboard: Chatbot Interface -->
+      <section class="chat-assistant" aria-label="\uAC00\uC774\uB4DC \uCC57\uBD07 \uB300\uD654\uBC29">
+        <div class="assistant-header">
+          <div class="assistant-avatar">
+            <i class="fa-solid fa-robot"></i>
+            <span class="online-indicator"></span>
+          </div>
+          <div class="assistant-meta">
+            <h4>\uBC14\uB9AC(Bari)</h4>
+            <span>AI \uBC14\uB974\uC140\uB85C\uB098 \uB85C\uCEEC \uAC00\uC774\uB4DC</span>
+          </div>
+        </div>
+
+        <!-- Message Box -->
+        <div class="message-log" id="chat-messages">
+          <div class="msg-bubble msg-bot">
+            <div class="msg-text">
+              <p>Hola! \u{1F1EA}\u{1F1F8} \uBC14\uB974\uC140\uB85C\uB098 \uD604\uC9C0 AI \uAC00\uC774\uB4DC **\uBC14\uB9AC(Bari)**\uC785\uB2C8\uB2E4! </p>
+              <p>\uC67C\uCABD\uC758 \uC544\uB984\uB2E4\uC6B4 \uAC00\uC6B0\uB514 \uB79C\uB4DC\uB9C8\uD06C \uCE74\uB4DC\uB97C \uC120\uD0DD\uD574 \uC0C1\uC138 \uC608\uB9E4 \uC815\uBCF4\uB97C \uBB3C\uC5B4\uBCF4\uC2DC\uAC70\uB098, \uC6D0\uD558\uC2DC\uB294 \uC77C\uC815, \uB0A0\uC528, \uC228\uACA8\uC9C4 \uB85C\uCEEC \uB9DB\uC9D1 \uC815\uBCF4 \uB4F1\uC744 \uC544\uB798\uC5D0 \uC790\uC720\uB86D\uAC8C \uC785\uB825\uD574 \uBCF4\uC138\uC694!</p>
+              
+              <div class="msg-chips">
+                <button class="query-chip" data-query="\uC0AC\uADF8\uB77C\uB2E4 \uD30C\uBC00\uB9AC\uC544 \uC785\uC7A5\uAD8C\uC740 \uC608\uC57D\uC81C\uC778\uAC00\uC694? \uC608\uB9E4 \uD301\uC744 \uC54C\uB824\uC8FC\uC138\uC694.">\u{1F39F}\uFE0F \uC131\uB2F9 \uC608\uB9E4 \uD301</button>
+                <button class="query-chip" data-query="\uBC14\uB974\uC140\uB85C\uB098\uC5D0\uC11C \uC18C\uB9E4\uCE58\uAE30 \uC608\uBC29\uD558\uACE0 \uC548\uC804\uD558\uAC8C \uC5EC\uD589\uD558\uB294 \uD301\uC744 \uC54C\uB824\uC8FC\uC138\uC694.">\u26A0\uFE0F \uC548\uC804 \uC608\uBC29 \uC218\uCE59</button>
+                <button class="query-chip" data-query="\uBC14\uB974\uC140\uB85C\uB098 \uD574\uBCC0(\uBC14\uB974\uC140\uB85C\uB124\uD0C0) \uC8FC\uBCC0 \uAC00\uBCFC \uB9CC\uD55C \uACF3 \uCD94\uCC9C\uD574\uC918.">\u{1F3D6}\uFE0F \uD574\uBCC0 \uCF54\uC2A4</button>
+              </div>
+            </div>
+            <span class="msg-time" id="welcome-time">00:00</span>
+          </div>
+        </div>
+
+        <!-- Text Input Area -->
+        <div class="input-dock">
+          <form id="chat-form">
+            <div class="dock-wrapper">
+              <textarea id="chat-input" placeholder="\uBC14\uB974\uC140\uB85C\uB098 \uC5EC\uD589\uC5D0 \uB300\uD574 \uC9C8\uBB38\uD574 \uBCF4\uC138\uC694... (Shift+Enter \uC904\uBC14\uAFC8)" rows="1" required></textarea>
+              <button type="submit" id="send-btn" class="send-btn-circle" aria-label="\uBA54\uC2DC\uC9C0 \uC804\uC1A1">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+          <div class="dock-footer">
+            <span>Powered by Gemini 2.5 Flash</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    let API_URL = '/api/chat';
+    
+    // Fallback to direct client-side call when opening HTML file locally
+    if (window.location.protocol === 'file:') {
+      const API_KEY = 'AQ.Ab8RN6LG2sBmfCYsRKYP3yEDSwYzbJf9HsXkGfV5EeHLvpophg';
+      API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + API_KEY;
+    }
+
+    const SYSTEM_INSTRUCTION = "You are 'Bari' (\uBC14\uB9AC), a passionate, friendly, and expert local travel guide in Barcelona. Your mission is to help tourists have the absolute best experience in Barcelona. Provide useful information including practical travel advice, ticket booking tips, local food recommendations and safety tips. Be warm and reply in Korean.";
+
+    let chatHistory = [];
+    let isGenerating = false;
+
+    const chatMessages = document.getElementById('chat-messages');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const welcomeTime = document.getElementById('welcome-time');
+    const liveTimeSpan = document.getElementById('live-time');
+
+    // Live clock for Barcelona (UTC+2 / UTC+1)
+    function updateBarcelonaClock() {
+      const options = {
+        timeZone: 'Europe/Madrid',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const formatter = new Intl.DateTimeFormat('ko-KR', options);
+      if (liveTimeSpan) {
+        liveTimeSpan.textContent = formatter.format(new Date());
+      }
+    }
+    
+    setInterval(updateBarcelonaClock, 1000);
+    updateBarcelonaClock();
+
+    function updateWelcomeTime() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      if (welcomeTime) {
+        welcomeTime.textContent = hours + ':' + minutes;
+      }
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('barcelona-theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+      }
+    }
+
+    themeToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        localStorage.setItem('barcelona-theme', 'light');
+      } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('barcelona-theme', 'dark');
+      }
+    });
+
+    function parseMarkdown(text) {
+      let html = text;
+      html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      html = html.replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>');
+      html = html.replace(/__(.*?)__/g, '<strong>$1</strong>');
+
+      const lines = html.split('\\n');
+      let inList = false;
+      let resultLines = [];
+
+      for (let line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          const itemContent = trimmed.substring(2);
+          if (!inList) { resultLines.push('<ul>'); inList = true; }
+          resultLines.push('<li>' + itemContent + '</li>');
+        } else if (trimmed.match(/^\\d+\\.\\s(.*)/)) {
+          const itemContent = trimmed.replace(/^\\d+\\.\\s/, '');
+          if (!inList) { resultLines.push('<ol>'); inList = true; }
+          resultLines.push('<li>' + itemContent + '</li>');
+        } else {
+          if (inList) {
+            if (resultLines.join('').includes('<ul>')) { resultLines.push('</ul>'); } else { resultLines.push('</ol>'); }
+            inList = false;
+          }
+          resultLines.push(line);
+        }
+      }
+      if (inList) resultLines.push('</ul>');
+      html = resultLines.join('\\n');
+
+      html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+      html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+      html = html.replace(/\`(.*?)\`/g, '<code>$1</code>');
+
+      const paragraphs = html.split(/\\n\\n+/);
+      html = paragraphs
+        .map(p => {
+          p = p.trim();
+          if (!p) return '';
+          if (p.startsWith('<ul') || p.startsWith('<ol') || p.startsWith('<h') || p.startsWith('<li')) return p;
+          return '<p>' + p.replace(/\\n/g, '<br>') + '</p>';
+        })
+        .filter(p => p !== '')
+        .join('');
+
+      return html;
+    }
+
+    function appendMessage(sender, text, isMarkdown = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('msg-bubble', sender === 'user' ? 'msg-user' : 'msg-bot');
+
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('msg-text');
+      
+      if (isMarkdown) {
+        contentDiv.innerHTML = parseMarkdown(text);
+      } else {
+        const p = document.createElement('p');
+        p.textContent = text;
+        contentDiv.appendChild(p);
+      }
+
+      const timeSpan = document.createElement('span');
+      timeSpan.classList.add('msg-time');
+      const now = new Date();
+      timeSpan.textContent = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+
+      messageDiv.appendChild(contentDiv);
+      messageDiv.appendChild(timeSpan);
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    let typingIndicatorElement = null;
+
+    function showTypingIndicator() {
+      if (typingIndicatorElement) return;
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('msg-bubble', 'msg-bot', 'typing-message');
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('msg-text');
+      const indicator = document.createElement('div');
+      indicator.classList.add('typing-dots');
+      indicator.innerHTML = '<span class="bounce-dot"></span><span class="bounce-dot"></span><span class="bounce-dot"></span>';
+      contentDiv.appendChild(indicator);
+      messageDiv.appendChild(contentDiv);
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      typingIndicatorElement = messageDiv;
+    }
+
+    function hideTypingIndicator() {
+      if (typingIndicatorElement) {
+        typingIndicatorElement.remove();
+        typingIndicatorElement = null;
+      }
+    }
+
+    async function callGemini(promptText) {
+      showTypingIndicator();
+      isGenerating = true;
+      sendBtn.disabled = true;
+
+      chatHistory.push({ role: 'user', parts: [{ text: promptText }] });
+
+      const payload = {
+        contents: chatHistory,
+        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+        generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+      };
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => null);
+          const errMsg = errData?.error?.message || response.statusText || 'Unknown error';
+          throw new Error(errMsg + ' (' + response.status + ')');
+        }
+
+        const data = await response.json();
+        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        hideTypingIndicator();
+
+        if (botText) {
+          chatHistory.push({ role: 'model', parts: [{ text: botText }] });
+          appendMessage('bot', botText, true);
+        } else {
+          appendMessage('bot', '\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uB2F5\uBCC0\uC744 \uC0DD\uC131\uD558\uB294 \uC911\uC5D0 \uBB38\uC81C\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4.');
+        }
+      } catch (error) {
+        console.error(error);
+        hideTypingIndicator();
+        appendMessage('bot', 'Gemini API \uD638\uCD9C \uC911 \uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4: ' + error.message);
+        chatHistory.pop();
+      } finally {
+        isGenerating = false;
+        sendBtn.disabled = false;
+      }
+    }
+
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (isGenerating) return;
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      callGemini(text);
+    });
+
+    chatInput.addEventListener('input', () => {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = (chatInput.scrollHeight) + 'px';
+    });
+
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        chatForm.dispatchEvent(new Event('submit'));
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const chip = e.target.closest('.query-chip');
+      if (chip) {
+        const query = chip.getAttribute('data-query');
+        if (query && !isGenerating) {
+          appendMessage('user', query);
+          callGemini(query);
+        }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const chip = e.target.closest('.route-chip');
+      if (chip) {
+        const query = chip.getAttribute('data-query');
+        if (query && !isGenerating) {
+          appendMessage('user', query);
+          callGemini(query);
+        }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.destination-card');
+      if (card) {
+        const attractionName = card.getAttribute('data-attraction');
+        if (attractionName && !isGenerating) {
+          const query = "\uBC14\uB974\uC140\uB85C\uB098\uC758 \uB300\uD45C \uBA85\uC18C\uC778 '" + attractionName + "'\uC5D0 \uB300\uD574 \uC790\uC138\uD788 \uC18C\uAC1C\uD574 \uC8FC\uACE0, \uBC29\uBB38\uD560 \uB54C \uC54C\uC544\uC57C \uD558\uB294 \uC608\uC57D \uBC0F \uC5EC\uD589 \uD301\uC744 \uC0C1\uC138\uD788 \uC54C\uB824\uC918!";
+          appendMessage('user', "'" + attractionName + "' \uBA85\uC18C \uC815\uBCF4 \uBB3C\uC5B4\uBCF4\uAE30");
+          callGemini(query);
+        }
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const card = e.target.closest('.destination-card');
+      if (card && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        card.click();
+      }
+    });
+
+    initTheme();
+    updateWelcomeTime();
+  <\/script>
+</body>
+</html>`;
+var index_default = {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    if (url.pathname === "/api/chat" && request.method === "POST") {
+      try {
+        const body = await request.json();
+        const API_KEY = "AQ.Ab8RN6LG2sBmfCYsRKYP3yEDSwYzbJf9HsXkGfV5EeHLvpophg";
+        const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY;
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+        });
+        if (!response.ok) {
+          const errText = await response.text();
+          return new Response(errText, {
+            status: response.status,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+        const data = await response.json();
+        return new Response(JSON.stringify(data), {
+          headers: { "Content-Type": "application/json" }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+    }
+    return new Response(htmlContent, {
+      headers: {
+        "content-type": "text/html;charset=UTF-8"
+      }
+    });
+  }
+};
+
+// ../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
+var drainBody = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } finally {
+    try {
+      if (request.body !== null && !request.bodyUsed) {
+        const reader = request.body.getReader();
+        while (!(await reader.read()).done) {
+        }
+      }
+    } catch (e) {
+      console.error("Failed to drain the unused request body.", e);
+    }
+  }
+}, "drainBody");
+var middleware_ensure_req_body_drained_default = drainBody;
+
+// ../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
+function reduceError(e) {
+  return {
+    name: e?.name,
+    message: e?.message ?? String(e),
+    stack: e?.stack,
+    cause: e?.cause === void 0 ? void 0 : reduceError(e.cause)
+  };
+}
+__name(reduceError, "reduceError");
+var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } catch (e) {
+    const error = reduceError(e);
+    return Response.json(error, {
+      status: 500,
+      headers: { "MF-Experimental-Error-Stack": "true" }
+    });
+  }
+}, "jsonError");
+var middleware_miniflare3_json_error_default = jsonError;
+
+// .wrangler/tmp/bundle-HFV9hT/middleware-insertion-facade.js
+var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
+  middleware_ensure_req_body_drained_default,
+  middleware_miniflare3_json_error_default
+];
+var middleware_insertion_facade_default = index_default;
+
+// ../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/common.ts
+var __facade_middleware__ = [];
+function __facade_register__(...args) {
+  __facade_middleware__.push(...args.flat());
+}
+__name(__facade_register__, "__facade_register__");
+function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
+  const [head, ...tail] = middlewareChain;
+  const middlewareCtx = {
+    dispatch,
+    next(newRequest, newEnv) {
+      return __facade_invokeChain__(newRequest, newEnv, ctx, dispatch, tail);
+    }
+  };
+  return head(request, env, ctx, middlewareCtx);
+}
+__name(__facade_invokeChain__, "__facade_invokeChain__");
+function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
+  return __facade_invokeChain__(request, env, ctx, dispatch, [
+    ...__facade_middleware__,
+    finalMiddleware
+  ]);
+}
+__name(__facade_invoke__, "__facade_invoke__");
+
+// .wrangler/tmp/bundle-HFV9hT/middleware-loader.entry.ts
+var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
+  constructor(scheduledTime, cron, noRetry) {
+    this.scheduledTime = scheduledTime;
+    this.cron = cron;
+    this.#noRetry = noRetry;
+  }
+  static {
+    __name(this, "__Facade_ScheduledController__");
+  }
+  #noRetry;
+  noRetry() {
+    if (!(this instanceof ___Facade_ScheduledController__)) {
+      throw new TypeError("Illegal invocation");
+    }
+    this.#noRetry();
+  }
+};
+function wrapExportedHandler(worker) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return worker;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
+    if (worker.fetch === void 0) {
+      throw new Error("Handler does not export a fetch() function.");
+    }
+    return worker.fetch(request, env, ctx);
+  }, "fetchDispatcher");
+  return {
+    ...worker,
+    fetch(request, env, ctx) {
+      const dispatcher = /* @__PURE__ */ __name(function(type, init) {
+        if (type === "scheduled" && worker.scheduled !== void 0) {
+          const controller = new __Facade_ScheduledController__(
+            Date.now(),
+            init.cron ?? "",
+            () => {
+            }
+          );
+          return worker.scheduled(controller, env, ctx);
+        }
+      }, "dispatcher");
+      return __facade_invoke__(request, env, ctx, dispatcher, fetchDispatcher);
+    }
+  };
+}
+__name(wrapExportedHandler, "wrapExportedHandler");
+function wrapWorkerEntrypoint(klass) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return klass;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  return class extends klass {
+    #fetchDispatcher = /* @__PURE__ */ __name((request, env, ctx) => {
+      this.env = env;
+      this.ctx = ctx;
+      if (super.fetch === void 0) {
+        throw new Error("Entrypoint class does not define a fetch() function.");
+      }
+      return super.fetch(request);
+    }, "#fetchDispatcher");
+    #dispatcher = /* @__PURE__ */ __name((type, init) => {
+      if (type === "scheduled" && super.scheduled !== void 0) {
+        const controller = new __Facade_ScheduledController__(
+          Date.now(),
+          init.cron ?? "",
+          () => {
+          }
+        );
+        return super.scheduled(controller);
+      }
+    }, "#dispatcher");
+    fetch(request) {
+      return __facade_invoke__(
+        request,
+        this.env,
+        this.ctx,
+        this.#dispatcher,
+        this.#fetchDispatcher
+      );
+    }
+  };
+}
+__name(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
+var WRAPPED_ENTRY;
+if (typeof middleware_insertion_facade_default === "object") {
+  WRAPPED_ENTRY = wrapExportedHandler(middleware_insertion_facade_default);
+} else if (typeof middleware_insertion_facade_default === "function") {
+  WRAPPED_ENTRY = wrapWorkerEntrypoint(middleware_insertion_facade_default);
+}
+var middleware_loader_entry_default = WRAPPED_ENTRY;
+export {
+  __INTERNAL_WRANGLER_MIDDLEWARE__,
+  middleware_loader_entry_default as default
+};
+//# sourceMappingURL=index.js.map
